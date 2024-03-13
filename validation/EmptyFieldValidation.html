@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty Field Validation</title>
+    <style>
+        input{
+            margin: 10px;
+        }
+    </style>
+    <script>
+        function validate(event){
+            var username = document.getElementById("username");
+            if(username.value.trim() ==""){
+                alert("enter username");
+                username.focus();
+                return false;
+            }
+
+            var email = document.getElementById("email");
+            if(email.value ==""){
+                alert("enter email");
+                email.focus();
+                return false;
+            }
+
+            var male=document.getElementById("male");
+            var female = document.getElementById("female");
+            if(male.checked==false && female.checked==false){
+                alert("gender required");
+                return false;
+            }
+
+            var subject = document.getElementById("subject");
+            if(subject.selectedIndex == 0){
+                alert("select subject");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="Welcome.html" onsubmit="return validate(event)"> <!--false returned to form so it will not forward-->
+        <input type="text"  id="username" placeholder="enter username"><br>
+        <input type="email"  id="email" placeholder="enter email"><br>
+        <input type="radio" name="gender" id="male">
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="female">
+        <label for="female">female</label><br>
+        <select name="subject" id="subject">
+            <option value="Select subject">Select Subject</option>
+            <option value="C language">C language</option>
+            <option value="C++ language">C++ language</option>
+            <option value="C# language">C# language</option>
+            <option value="Java language">Java language</option>
+        </select><br><br><br><br>
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+    </form>
+</body>
+</html>
